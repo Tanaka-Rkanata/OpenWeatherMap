@@ -16,7 +16,8 @@
     "sass-loader": "^10.5.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
-    "vuetify": "^3.8.0"
+    "vuetify": "^3.8.0",
+    "wanakana": "^5.3.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0"

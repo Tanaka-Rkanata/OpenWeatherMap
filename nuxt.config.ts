@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      openWeatherApiKey: process.env.OPENWEATHER_API_KEY
+      openWeatherApiKey: process.env.OPENWEATHER_API_KEY,
+      geoDbApiKey: process.env.GEODB_API_KEY,
     }
   },
   css: ['vuetify/styles'],
