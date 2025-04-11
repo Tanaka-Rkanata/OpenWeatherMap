@@ -1,15 +1,18 @@
-import {  createVuetify } from 'vuetify'
+// plugins/vuetify.ts
+import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import { ja } from 'vuetify/locale'
 
-import 'vuetify/styles'
-import '@mdi/font/css/materialdesignicons.css'
-
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(nuxtApp => {
   const vuetify = createVuetify({
     components,
     directives,
-    ssr: true,
+    locale: {
+      locale: 'ja',
+      messages: { ja }
+    }
   })
+
   nuxtApp.vueApp.use(vuetify)
 })

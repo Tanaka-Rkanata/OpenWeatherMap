@@ -7,7 +7,7 @@ type CityLocation = {
 export const useCity = async (input: string): Promise<{ lat: number; lon: number } | null> => {
   const trimmed = input.trim().toLowerCase()
 
-  // ① パターン辞書の読み込み（全表記 → 英語都市名）
+  //辞書の読み込み
   const patternRes = await fetch('/prefecture_pattern_map_final.json')
   const patternMap: Record<string, string> = await patternRes.json()
   
@@ -18,7 +18,7 @@ export const useCity = async (input: string): Promise<{ lat: number; lon: number
     return null
   }
 
-  // ② 緯度・経度辞書の読み込み
+  //緯度・経度辞書の読み込み
   const cityRes = await fetch('/japan_city_locations.json')
   const cities: CityLocation[] = await cityRes.json()
 

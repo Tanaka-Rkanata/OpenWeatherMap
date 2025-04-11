@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import WeatherSearch from '~/components/WeatherSearch.vue'
+import NewsList from '~/components/NewsList.vue'
+import ScheduleCalendar from '~/components/ScheduleCalendar.vue'
 
 const city = ref('')
 const weatherData = ref<any>(null)
 const error = ref<any>(null)
+const { data: newsData, error: newsError } = await useNews()
 
-async function getWeather() {
-  const location = await useCity(city.value)
+async function getWeather(city: string) {
+  console.log('親で受け取った city:', city)
+  const location = await useCity(city)
 
   if (!location) {
     error.value = { message: '都道府県が見つかりませんでした。' }
@@ -25,29 +30,18 @@ async function getWeather() {
 </script>
 
 <template>
-  <v-container class="mt-6" max-width="500px">
-    <v-text-field
-      v-model="city"
-      label="都道府県名を日本語で入力（例：東京都）"
-      prepend-icon="mdi-map"
-      outlined
-      class="mb-4"
-    />
+  <v-container class="mt-6" max-width="600px">
+    <WeatherSearch :weatherData="weatherData" :error="error" :onSearch="getWeather" />
 
-    <v-btn color="primary" @click="getWeather">天気を取得</v-btn>
+    <NewsList :news-data="newsData" />
 
-    <v-alert v-if="error" type="error" class="mt-4">
-      {{ error.message }}
-    </v-alert>
-
-    <v-card v-if="weatherData" class="mt-4" elevation="3">
-      <v-card-title>{{ weatherData.name }} の天気</v-card-title>
-      <v-card-text>
-        <div>天候: {{ weatherData.weather[0].description }}</div>
-        <div>気温: {{ weatherData.main.temp }} ℃</div>
-        <div>湿度: {{ weatherData.main.humidity }} %</div>
-      </v-card-text>
-    </v-card>
+    <ScheduleCalendar />
   </v-container>
 </template>
 
+<style scoped>
+.full-width-icon-reset {
+  display: block !important;
+  width: 100% !important;
+}
+</style>
