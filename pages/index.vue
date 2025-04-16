@@ -4,10 +4,9 @@ import WeatherSearch from '~/components/WeatherSearch.vue'
 import NewsList from '~/components/NewsList.vue'
 import ScheduleCalendar from '~/components/ScheduleCalendar.vue'
 
-const city = ref('')
 const weatherData = ref<any>(null)
 const error = ref<any>(null)
-const { data: newsData, error: newsError } = await useNews()
+const { data: newsData } = await useNews()
 
 async function getWeather(city: string) {
   console.log('親で受け取った city:', city)
@@ -30,18 +29,20 @@ async function getWeather(city: string) {
 </script>
 
 <template>
-  <v-container class="mt-6" max-width="600px">
-    <WeatherSearch :weatherData="weatherData" :error="error" :onSearch="getWeather" />
+  <v-container fluid class="mt-4">
+    <v-row dense align="start" justify="space-around">
 
-    <NewsList :news-data="newsData" />
+      <v-col cols="12" md="3" class="px-2">
+        <WeatherSearch :weatherData="weatherData" :error="error" :onSearch="getWeather" />
+      </v-col>
 
-    <ScheduleCalendar />
+      <v-col cols="12" md="4" class="px-2">
+        <NewsList :news-data="newsData" />
+      </v-col>
+
+      <v-col cols="12" md="5" class="px-2">
+        <ScheduleCalendar />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
-
-<style scoped>
-.full-width-icon-reset {
-  display: block !important;
-  width: 100% !important;
-}
-</style>

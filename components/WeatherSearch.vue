@@ -53,4 +53,4 @@ function searchWeather() {
   display: block !important;
   width: 100% !important;
 }
-</style>
+</style> 
