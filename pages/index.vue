@@ -29,20 +29,21 @@ async function getWeather(city: string) {
 </script>
 
 <template>
-  <v-container fluid class="mt-4">
-    <v-row dense align="start" justify="space-around">
-
-      <v-col cols="12" md="3" class="px-2">
-        <WeatherSearch :weatherData="weatherData" :error="error" :onSearch="getWeather" />
-      </v-col>
-
-      <v-col cols="12" md="4" class="px-2">
+  <v-container fluid class="">
+    <v-row dense align="start" justify="space-around" class="">
+      
+      <v-col cols="12" md="6" class="pa-4">
         <NewsList :news-data="newsData" />
       </v-col>
 
-      <v-col cols="12" md="5" class="px-2">
+      <v-col cols="12" md="6" class="pa-4">
+        <WeatherSearch :weatherData="weatherData" :error="error" :onSearch="getWeather" />
+      </v-col>
+
+      <v-col cols="12" md="12" class="pa-4 mt-6">
         <ScheduleCalendar />
       </v-col>
     </v-row>
   </v-container>
 </template>
+

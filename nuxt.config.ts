@@ -10,7 +10,10 @@ export default defineNuxtConfig({
       newsApiKey: process.env.NEWS_API_KEY,
     }
   },
-  css: ['vuetify/styles'],
+  css: [
+    'vuetify/styles',
+    'leaflet/dist/leaflet.css'
+  ],
   vite: {
     define: {
       'process.env.DEBUG': false,

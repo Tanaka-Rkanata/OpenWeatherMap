@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "leaflet": "^1.9.4",
     "nuxt": "^3.16.2",
     "sass": "^1.86.3",
     "sass-loader": "^10.5.2",
@@ -20,6 +21,7 @@
     "wanakana": "^5.3.1"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.17",
     "@types/node": "^22.14.0"
   }
 }

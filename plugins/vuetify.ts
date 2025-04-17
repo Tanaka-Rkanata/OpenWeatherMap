@@ -1,3 +1,4 @@
+// plugins/vuetify.ts
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -9,7 +10,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       ...components,
       VCalendar
     },
-    directives
+    directives,
+    // @ts-expect-error:labs
+    labs: {
+      VCalendar: true
+    }
   })
 
   nuxtApp.vueApp.use(vuetify)

@@ -13,14 +13,9 @@ const newEvent = ref({
   color: 'blue'
 })
 
-function openDialog({ date }: { date: string }) {
-  console.log('クリックされた日付:', date)
-  newEvent.value = {
-    name: '',
-    comment: '',
-    start: date,
-    color: 'blue'
-  }
+function openDialog(day: any) {
+  console.log('クリックされた日付:', day)
+  newEvent.value.start = day.date
   dialog.value = true
 }
 
@@ -47,14 +42,15 @@ watch(events, (newEvents) => {
 }, { deep: true })
 </script>
 
+
 <template>
-  <div style="height: 600px">
-    <v-calendar
+  <div style="height: 100%">
+    <VCalendar
       v-model="selectedDate"
       :events="events"
-      type="week"
+      view-mode="month"
+      @dayclick="openDialog"
       color="primary"
-      @click:date="openDialog"
       :event-text="formatEventText"
     />
 
